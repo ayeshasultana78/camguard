@@ -1,0 +1,25 @@
+import cv2
+import numpy as np
+import time
+import datetime
+
+# Initialize video capture from the primary webcam
+video = cv2.VideoCapture(0)
+
+while True:
+    # Read the current frame from the camera
+    check, frame = video.read()
+    
+    # Convert the frame to grayscale for processing
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    
+    # Show the grayscale video feed
+    cv2.imshow('Video', gray)
+    
+    # Exit the loop when the 'q' key is pressed
+    if cv2.waitKey(1) == ord('q'):
+        break
+
+# Release the camera and close all windows
+video.release()
+cv2.destroyAllWindows()
